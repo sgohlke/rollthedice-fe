@@ -1,0 +1,31 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll the dice!</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Roll the dice!</h1>
+    </header>
+    <main>
+      <article>
+        <section id="inputSection">
+          <h2>Das Spiel</h2>
+          <span>Zum Würfeln eine Anzahl an Runden eingeben und auf den <b>Roll the Dice!</b> Button klicken.</span><br /><br />
+          <label for="numberOfRounds">Anzahl an Runden</label><input id="numberOfRounds" type="number" value="10" />
+          <input id="rollButton" type="button" value="Roll the dice!" onclick="getResults()" />
+        </section>
+        <section id="outputSection">
+          <h2>Das Ergebnis</h2>
+          <span id="result"></span>
+        </section>
+      </article>
+    </main>
+  </body>
+
+</html>

@@ -1,0 +1,13 @@
+body {
+    color: darkblue;
+  }
+  
+  #rollButton {
+    background-color: darkblue;
+    color: white;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
