@@ -23,8 +23,14 @@ function getNumberOfRounds() {
   } else return DEFAULT_NUMBER_OF_ROUNDS;
 }
 
+async function getRandomNumbers(numberOfRoundsToPlay) {
+    const numbersResponse = await fetch(`https://rollthedice-api.deno.dev/random/${numberOfRoundsToPlay}`)
+    const numbersAsJSON = await numbersResponse.json()
+    return numbersAsJSON.numbers
+}
 
-function getResults() {
+
+async function getResults() {
 
   const numberOfRoundsToPlay = getNumberOfRounds();
   document.getElementById('result').innerHTML = ''
@@ -35,9 +41,11 @@ function getResults() {
   let resultNumbers = '';
   let sum = 0;
   let currentNumber = 0;
-  for (let counter = 0; counter < numberOfRoundsToPlay; counter++) {
-    currentNumber = generateRandomNumber();
-    resultNumbers += currentNumber + markMinMaxNumber(currentNumber) + (!slimMode && counter < numberOfRoundsToPlay - 1 ? '---' : ' ')
+
+  const randomNumbers = await getRandomNumbers(numberOfRoundsToPlay)
+  for (let counter = 0; counter < randomNumbers.length; counter++) {
+    currentNumber = randomNumbers[counter];
+    resultNumbers += currentNumber + markMinMaxNumber(currentNumber) + (!slimMode && counter < randomNumbers.length - 1 ? '---' : ' ')
     //document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + resultNumbers
     sum += currentNumber
   }
